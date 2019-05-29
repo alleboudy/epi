@@ -2,8 +2,11 @@ from test_framework import generic_test
 
 
 def inorder_traversal(tree):
-    # TODO - you fill in here.
-    return []
+    
+    if not tree:
+        return []
+    
+    return inorder_traversal(tree.left) + [tree.data] +inorder_traversal(tree.right)
 
 
 if __name__ == '__main__':

@@ -3,6 +3,15 @@ from test_framework import generic_test
 
 def h_index(citations):
     # TODO - you fill in here.
+
+    citations.sort()
+
+    n = len(citations)
+
+    for i in range(n):
+        if citations[i]>= n-i:
+            return n -i
+
     return 0
 
 

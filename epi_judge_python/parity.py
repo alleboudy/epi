@@ -1,9 +1,15 @@
 from test_framework import generic_test
 
+PRECOMPUTED_PARITY={}
+
 
 def parity(x):
-    # TODO - you fill in here.
-    return 0
+
+    # res = 0
+    # while x!=0:
+    #     res ^=x&1
+    #     x>>=1
+    # return res
 
 
 if __name__ == '__main__':

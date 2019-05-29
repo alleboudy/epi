@@ -1,9 +1,22 @@
 from test_framework import generic_test
-
+import collections
 
 def can_form_palindrome(s):
-    # TODO - you fill in here.
-    return True
+    #d = collections.Counter(list(s))
+    #oddCtr = 0
+    #isPal=True
+    #for v in d.values():
+    #    if v%2!=0:
+    #        oddCtr+=1
+    #        if oddCtr>1:
+    #            isPal=False
+    #            break
+    #return isPal
+
+    return sum(v%2 for v in collections.Counter(s).values())<=1
+            
+
+    
 
 
 if __name__ == '__main__':

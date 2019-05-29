@@ -2,7 +2,10 @@ from test_framework import generic_test
 
 
 def closest_int_same_bit_count(x):
-    # TODO - you fill in here.
+    b = bin(x)
+    for i in range(1,len(b-2)):
+        
+
     return 0
 
 

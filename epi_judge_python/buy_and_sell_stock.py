@@ -2,8 +2,11 @@ from test_framework import generic_test
 
 
 def buy_and_sell_stock_once(prices):
-    # TODO - you fill in here.
-    return 0.0
+    max_return_ever = float('-inf')
+    for i,v in enumerate(prices):
+        for j in prices[i:]:
+            max_return_ever = max(max_return_ever, j-v)
+    return max_return_ever if max_return_ever>0 else 0
 
 
 if __name__ == '__main__':
