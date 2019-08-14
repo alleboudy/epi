@@ -10,8 +10,37 @@ Interval = collections.namedtuple('Interval', ('left', 'right'))
 
 
 def union_of_intervals(intervals):
-    # TODO - you fill in here.
-    return []
+    result = []
+    intervals.sort(key=lambda x : (x.left.val, not x.left.is_closed,x.right.val,not x.right.is_closed))
+
+    ptr = 0
+    
+    while ptr<len(intervals):
+        min_start = intervals[ptr].left
+        max_end = intervals[ptr].right
+        ptr+=1
+        while ptr<len(intervals) and ( intervals[ptr].right.val<=max_end.val or intervals[ptr].left.val <= max_end.val):
+            if max_end.val==intervals[ptr].right.val:
+                max_end = intervals[ptr].right if  intervals[ptr].right.is_closed else max_end
+            elif max_end.val<intervals[ptr].right.val:
+                if not (max_end.val==intervals[ptr].left.val and ( not max_end.is_closed and not intervals[ptr].left.is_closed)):
+                    max_end = intervals[ptr].right
+                else:
+                    break
+            ptr+=1
+
+        result.append(Interval(min_start,max_end))
+    return result
+
+
+        
+
+
+    
+
+
+    
+    
 
 
 @enable_executor_hook

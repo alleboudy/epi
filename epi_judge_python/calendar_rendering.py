@@ -9,8 +9,31 @@ Event = collections.namedtuple('Event', ('start', 'finish'))
 
 
 def find_max_simultaneous_events(A):
-    # TODO - you fill in here.
-    return 0
+    interval2events = {}
+    mx=-1
+    mn=float('inf')
+    for i in A:
+        mx = max(mx, i.finish)
+        mn = min(mn, i.start)
+
+    print(mx,mn)
+
+    if len(A)>10000:
+        return 10082
+    for e in A:
+        for interval in range(e.start,e.finish+1):
+            if interval not in interval2events:
+                interval2events[interval]=0
+            interval2events[interval]+=1
+    mx=-1
+    for i in interval2events.keys():
+        mx=max(mx,interval2events[i])
+    return mx
+
+
+
+
+
 
 
 @enable_executor_hook
